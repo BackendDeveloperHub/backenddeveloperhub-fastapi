@@ -1,7 +1,7 @@
 from fastapi import FastAPI
+from routes import health
 
-
-app = FastAPI()
+app = router
 
 @app.get("/")
 async def read_root():
