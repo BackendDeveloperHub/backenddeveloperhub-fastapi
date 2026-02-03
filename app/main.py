@@ -1,8 +1,8 @@
 from fastapi import FastAPI
-from routes import health
-
-app = router
+from routes.health import router as health_router
+app = FastAPI()
+app.include_router(health_router)
 
 @app.get("/")
-async def read_root():
-    return {"Hello": "World"}
+def read_root():
+    return {"msg": "Welcome to the Backend Developer Hub FastAPI!"}

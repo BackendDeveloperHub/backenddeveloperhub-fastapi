@@ -8,7 +8,10 @@ class health(BaseModel):
    weight:float
    height:float
 
-class User(BaseModel):
-   pass
-
+class BMIResult(BaseModel):
+   name:str
+   weight:float
+   height:float
+   bmi:float
+   
 

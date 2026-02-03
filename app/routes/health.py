@@ -1,12 +1,11 @@
-from fastapi import APIrouter,Path
-from schemas.health import health
+from fastapi import APIRouter,Path
+from schemas.health import BMIResult, health
 
 router = APIRouter()
 
-@router.get("/BMI/")
-def BMI_check(H:health= Path(...,le=0),W:health =Path(...,le=0) 
-):
-   H= H/100
-   bmi=W//H*H
-   return {"msg":f'{bmi}'}
- 
+@router.get("/healthcheck/{name}/{weight}/{height}", response_model=BMIResult)
+async def health_check(name: str, weight: float, height: float):
+    w=(height/100)**2
+    bmi = weight/w
+    return BMIResult(name=name, weight=weight, height=height, bmi=bmi)
+
