@@ -9,3 +9,4 @@ async def health_check(name: str, weight: float, height: float):
     bmi = weight/w
     return BMIResult(name=name, weight=weight, height=height, bmi=bmi)
 
+
